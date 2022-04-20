@@ -83,6 +83,7 @@ void main()
 	vector<Mat> motions;
 	//根据图0和图1的匹配点对的像素坐标，求解图1摄像机相对于图0摄像机的位姿R,T
 	GetTransform(K, correspondPoints[0], correspondPoints[1], R, T, mask);
+	//剔除被RANSAC筛选掉的无效点
 	Maskout(correspondPoints[0], mask);
 	Maskout(correspondPoints[1], mask);
 	Maskout(colorsOfCorrespondPoints[0], mask);
